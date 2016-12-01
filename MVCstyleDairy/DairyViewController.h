@@ -14,5 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property(strong,nonatomic) UIBarButtonItem*saveBtnItem;
 
-@property(nonatomic)BOOL createNew;
+@property(nonatomic)BOOL createNew;//Flag for creat new dairy item
+@property(nonatomic,strong)DiaryItem *dairyItem;
+
 @end

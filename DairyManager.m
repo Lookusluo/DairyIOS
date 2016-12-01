@@ -30,26 +30,27 @@
 }
 
 -(void)getAllFilesFromDisk{
-    NSString *diaryEntriesPath = [NSHomeDirectory() stringByAppendingString:@"/Document/DiaryEntries"];
-    
+//    NSString *diaryEntriesPath = [NSHomeDirectory() stringByAppendingString:@"/Document/DiaryEntries"];
+    NSLog(@"%@", NSHomeDirectory());
     BOOL isDirectory;
-    [self.fileManager fileExistsAtPath:diaryEntriesPath isDirectory:&isDirectory];
+    [self.fileManager fileExistsAtPath:self.diaryEntriesPath isDirectory:&isDirectory];//return a BOOL value to isDirectory to decide wheather it is a Directory or file
     
     NSError *error;
         if (!isDirectory){
-        [self.fileManager createDirectoryAtPath:diaryEntriesPath withIntermediateDirectories:NO attributes:nil error:&error];
+        [self.fileManager createDirectoryAtPath:self.diaryEntriesPath withIntermediateDirectories:NO attributes:nil error:&error];
         if (!error){
             NSLog(@"Directory created");
         }
     }
-    self.filesOnDisk = [[self.fileManager contentsOfDirectoryAtPath:diaryEntriesPath error:&error]mutableCopy];
+    self.filesOnDisk = [[self.fileManager contentsOfDirectoryAtPath:self.diaryEntriesPath error:&error]mutableCopy];
 }
 
 -(void)saveDiaryItemToDisk:(DiaryItem *)dItem{
     BOOL isDirectory;
-    if ([self.fileManager fileExistsAtPath:self.diaryEntriesPath isDirectory:&isDirectory]) {
+    [self.fileManager fileExistsAtPath:self.diaryEntriesPath isDirectory:&isDirectory];
+    
         if (isDirectory) {
-            NSString *dItemPath = [self.diaryEntriesPath stringByAppendingPathComponent:[dItem.title stringByAppendingString:@"txt"]];
+            NSString *dItemPath = [self.diaryEntriesPath stringByAppendingPathComponent:[dItem.title stringByAppendingString:@".txt"]];
             
             if ([self.fileManager fileExistsAtPath:dItemPath isDirectory:nil]) {
                 assert(NO);
@@ -59,13 +60,13 @@
                 [dItem.content writeToFile:dItemPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
                 
                 [self.filesOnDisk addObject:dItem.title];
+                [self.delegate informationUpdated];
             }
         }
         else{
 #warning hole
             assert(NO);
         }
-    }
 }
 
 

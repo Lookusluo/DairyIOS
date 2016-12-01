@@ -19,8 +19,8 @@
         ditem.title = self.titleTextField.text;
         ditem.content = self.contentTextView.text;
         
-        DairyManager *mangeSave = [DairyManager sharedInstance];
-        [mangeSave saveDiaryItemToDisk:ditem];
+        DairyManager *manageSave = [DairyManager sharedInstance];
+        [manageSave saveDiaryItemToDisk:ditem];
         
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -46,6 +46,11 @@
     
     self.saveBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveBtnClicked:)];
     self.navigationItem.rightBarButtonItem = self.saveBtnItem;
+    
+    if(!self.createNew){//check weather we need creat new Dairy Item
+        self.titleTextField.text = self.dairyItem.title;
+        self.contentTextView.text = self.dairyItem.content;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
