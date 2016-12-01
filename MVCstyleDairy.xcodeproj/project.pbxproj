@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C379949C1DF0B7FB00D44C79 /* IDAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C379949B1DF0B7FB00D44C79 /* IDAuthViewController.m */; };
 		C3C978751DEF305D00F5E6ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C978741DEF305D00F5E6ED /* main.m */; };
 		C3C978781DEF305D00F5E6ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C978771DEF305D00F5E6ED /* AppDelegate.m */; };
 		C3C978801DEF305D00F5E6ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C9787F1DEF305D00F5E6ED /* Assets.xcassets */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C379949A1DF0B7FB00D44C79 /* IDAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDAuthViewController.h; sourceTree = "<group>"; };
+		C379949B1DF0B7FB00D44C79 /* IDAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDAuthViewController.m; sourceTree = "<group>"; };
 		C3C978701DEF305D00F5E6ED /* MVCstyleDairy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVCstyleDairy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C978741DEF305D00F5E6ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C3C978761DEF305D00F5E6ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 		C3C978911DEF7D3900F5E6ED /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C379949A1DF0B7FB00D44C79 /* IDAuthViewController.h */,
+				C379949B1DF0B7FB00D44C79 /* IDAuthViewController.m */,
 				C3C978951DEFC35300F5E6ED /* DairyViewController.h */,
 				C3C978961DEFC35300F5E6ED /* DairyViewController.m */,
 				C3C9788E1DEF47E500F5E6ED /* HomeTableViewController.h */,
@@ -182,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C379949C1DF0B7FB00D44C79 /* IDAuthViewController.m in Sources */,
 				C3C978971DEFC35300F5E6ED /* DairyViewController.m in Sources */,
 				C3C978901DEF47E500F5E6ED /* HomeTableViewController.m in Sources */,
 				C3C9789A1DEFCD0A00F5E6ED /* DiaryItem.m in Sources */,

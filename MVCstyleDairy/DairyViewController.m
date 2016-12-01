@@ -25,8 +25,10 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
     else{
-        assert(NO);
-# warning hole
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
