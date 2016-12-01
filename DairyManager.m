@@ -13,13 +13,14 @@
     if(self = [ super init]){
         self.filesOnDisk = [[NSMutableArray alloc]init];
         self.fileManager = [NSFileManager defaultManager];
+        self.diaryEntriesPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/DiaryEntries"];
     }
     return self;
 }
 
 
 
-+(instancetype)sharedInstance{
++(instancetype)sharedInstance{//Singleton model only use in Model
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -44,7 +45,28 @@
     self.filesOnDisk = [[self.fileManager contentsOfDirectoryAtPath:diaryEntriesPath error:&error]mutableCopy];
 }
 
-
+-(void)saveDiaryItemToDisk:(DiaryItem *)dItem{
+    BOOL isDirectory;
+    if ([self.fileManager fileExistsAtPath:self.diaryEntriesPath isDirectory:&isDirectory]) {
+        if (isDirectory) {
+            NSString *dItemPath = [self.diaryEntriesPath stringByAppendingPathComponent:[dItem.title stringByAppendingString:@"txt"]];
+            
+            if ([self.fileManager fileExistsAtPath:dItemPath isDirectory:nil]) {
+                assert(NO);
+#warning hole
+            }
+            else{
+                [dItem.content writeToFile:dItemPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                
+                [self.filesOnDisk addObject:dItem.title];
+            }
+        }
+        else{
+#warning hole
+            assert(NO);
+        }
+    }
+}
 
 
 @end

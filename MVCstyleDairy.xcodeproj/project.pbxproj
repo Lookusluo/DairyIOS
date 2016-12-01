@@ -92,9 +92,9 @@
 			isa = PBXGroup;
 			children = (
 				C3C9788A1DEF31C900F5E6ED /* DairyManager.h */,
+				C3C9788B1DEF31C900F5E6ED /* DairyManager.m */,
 				C3C978981DEFCD0A00F5E6ED /* DiaryItem.h */,
 				C3C978991DEFCD0A00F5E6ED /* DiaryItem.m */,
-				C3C9788B1DEF31C900F5E6ED /* DairyManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
