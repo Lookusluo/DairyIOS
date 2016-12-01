@@ -13,10 +13,22 @@
 @end
 
 @implementation DairyViewController
+-(bool)validateInput{
+    if(self.titleTextField.text.length > 3 && self.contentTextView.text.length > 5){
+        return YES;
+    }
+    return NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.contentTextView.layer.borderColor = [[UIColor grayColor]CGColor];//Convert UIColor to CGColor
+    self.contentTextView.layer.borderWidth = 1.0;
+    self.contentTextView.layer.cornerRadius = 3.0;
+    
+    self.saveBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveBtnClicked)];
+    self.navigationItem.rightBarButtonItem = self.saveBtnItem;
 }
 
 - (void)didReceiveMemoryWarning {

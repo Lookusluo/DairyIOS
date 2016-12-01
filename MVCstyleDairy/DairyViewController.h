@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface DairyViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property(strong,nonatomic) UIBarButtonItem*saveBtnItem;
 
 @end
