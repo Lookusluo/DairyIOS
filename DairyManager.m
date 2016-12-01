@@ -50,16 +50,21 @@
     [self.fileManager fileExistsAtPath:self.diaryEntriesPath isDirectory:&isDirectory];
     
         if (isDirectory) {
-            NSString *dItemPath = [self.diaryEntriesPath stringByAppendingPathComponent:[dItem.title stringByAppendingString:@".txt"]];
+            NSString *dItemPath = [self.diaryEntriesPath stringByAppendingPathComponent:dItem.title];
             
             if ([self.fileManager fileExistsAtPath:dItemPath isDirectory:nil]) {
                 assert(NO);
 #warning hole
             }
             else{
-                [dItem.content writeToFile:dItemPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-                
+//                [dItem.content writeToFile:dItemPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//                
                 [self.filesOnDisk addObject:dItem.title];
+                DiaryItem*newDairy = [[DiaryItem alloc]init];
+                newDairy.title = dItem.title;
+                newDairy.content = dItem.content;
+                NSData*data = [NSKeyedArchiver archivedDataWithRootObject:newDairy];
+                [data writeToFile:dItemPath atomically:YES];
                 [self.delegate informationUpdated];
             }
         }
@@ -74,10 +79,12 @@
     [self.fileManager fileExistsAtPath:self.diaryEntriesPath isDirectory:&isDirectory];
 
     if (isDirectory) {
-        DiaryItem *dItem = [[DiaryItem alloc]init];
-        dItem.title = fileName;
+//        DiaryItem *dItem = [[DiaryItem alloc]init];
+//        dItem.title = fileName;
         NSString *dItemPath = [self.diaryEntriesPath stringByAppendingPathComponent:fileName];
-        dItem.content = [NSString stringWithContentsOfFile:dItemPath encoding:NSUTF8StringEncoding error:nil];
+        NSData *data = [NSData dataWithContentsOfFile:dItemPath];
+        DiaryItem *dItem = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+//        dItem.content = [NSString stringWithContentsOfFile:dItemPath encoding:NSUTF8StringEncoding error:nil];
         
         return dItem;
     }
