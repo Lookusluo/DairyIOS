@@ -13,7 +13,24 @@
 @end
 
 @implementation DairyViewController
--(bool)validateInput{
+-(void)saveBtnClicked:(UIBarButtonItem*)sender{
+    if ([self validInput]) {
+        DiaryItem *ditem = [[DiaryItem alloc]init];
+        ditem.title = self.titleTextField.text;
+        ditem.content = self.contentTextView.text;
+        
+        DairyManager *mangeSave = [DairyManager sharedInstance];
+        [mangeSave saveDiaryItemToDisk:ditem];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else{
+        assert(NO);
+# warning hole
+    }
+}
+
+-(bool)validInput{
     if(self.titleTextField.text.length > 3 && self.contentTextView.text.length > 5){
         return YES;
     }
@@ -27,7 +44,7 @@
     self.contentTextView.layer.borderWidth = 1.0;
     self.contentTextView.layer.cornerRadius = 3.0;
     
-    self.saveBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveBtnClicked)];
+    self.saveBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveBtnClicked:)];
     self.navigationItem.rightBarButtonItem = self.saveBtnItem;
 }
 

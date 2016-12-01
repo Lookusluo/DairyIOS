@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DiaryItem.h"
+#import "DairyManager.h"
 @interface DairyViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property(strong,nonatomic) UIBarButtonItem*saveBtnItem;
 
+@property(nonatomic)BOOL createNew;
 @end
