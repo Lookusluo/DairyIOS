@@ -77,9 +77,11 @@
         NSString *filename = cell.textLabel.text;
         NSLog(@"%@",filename);
         
+        DiaryItem *dItem = [self.diaryManger getDiaryItemForFileName:filename];
         //send data forward DairyViewController
         DairyViewController *destinationVC = [segue destinationViewController];
         destinationVC.createNew = NO;
+        destinationVC.dairyItem = dItem;
         
     }
 }

@@ -24,4 +24,5 @@
 -(instancetype)init;
 -(void)getAllFilesFromDisk;
 -(void)saveDiaryItemToDisk:(DiaryItem*)dItem;
+-(DiaryItem*)getDiaryItemForFileName:(NSString*)fileName;
 @end
