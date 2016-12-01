@@ -9,13 +9,21 @@
 #import "DairyManager.h"
 
 @implementation DairyManager
--(instancetype)init{
+-(instancetype)initWithCoder:(NSCoder*)aDecoder{
     if(self = [ super init]){
         self.filesOnDisk = [[NSMutableArray alloc]init];
         self.fileManager = [NSFileManager defaultManager];
     }
+    self.filename = [aDecoder decodeObjectForKey:@"name"];
+    self.fileContent = [aDecoder decodeObjectForKey:@"content"];
     return self;
 }
+
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.filename forKey:@"name"];
+    [aCoder encodeObject:self.fileContent forKey:@"content"];
+}
+
 +(instancetype)sharedInstance{
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
@@ -40,4 +48,8 @@
     }
     self.filesOnDisk = [[self.fileManager contentsOfDirectoryAtPath:diaryEntriesPath error:&error]mutableCopy];
 }
+
+
+
+
 @end
