@@ -25,9 +25,19 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    self.diaryManger = [DairyManager sharedInstance];
+    self.diaryManger.delegate = self;//When load, trigger delegate method informationUpdated.
+    [self.diaryManger getAllFilesFromDisk];
+    
+    
     self.addBtnItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonClicked:)];//add action to add Dairy
     
     self.navigationItem.rightBarButtonItem = self.addBtnItem;
+}
+
+
+-(void)informationUpdated{
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,8 +52,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    
+    return self.diaryManger.filesOnDisk.count;
 }
 
 
@@ -51,7 +61,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
-    
+    cell.textLabel.text = self.diaryManger.filesOnDisk[indexPath.row];
     return cell;
 }
 

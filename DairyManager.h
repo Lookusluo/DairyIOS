@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "DiaryItem.h"
+@protocol DiaryManagerDelegate<NSObject>
+-(void)informationUpdated;
+@end
 
 @interface DairyManager : NSObject
 @property(nonatomic,strong)NSMutableArray*filesOnDisk;
 @property (nonatomic, strong) NSFileManager *fileManager;
 @property (nonatomic, strong) NSString*diaryEntriesPath;
+@property(nonatomic,weak)id<DiaryManagerDelegate>delegate;
 
 
 +(instancetype)sharedInstance;

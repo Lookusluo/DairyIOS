@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DairyManager.h"
-@interface HomeTableViewController : UITableViewController
-@property(nonatomic,strong)DairyManager*dairyManger;
+
+@interface HomeTableViewController : UITableViewController<DiaryManagerDelegate>
+@property(nonatomic,strong)DairyManager*diaryManger;
 @end
