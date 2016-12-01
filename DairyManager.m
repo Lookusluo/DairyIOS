@@ -42,7 +42,7 @@
             NSLog(@"Directory created");
         }
     }
-    self.filesOnDisk = [[self.fileManager contentsOfDirectoryAtPath:self.diaryEntriesPath error:&error]mutableCopy];
+    self.filesOnDisk = [[self.fileManager contentsOfDirectoryAtPath:self.diaryEntriesPath error:&error]mutableCopy];//Copy and return objects
 }
 
 -(void)saveDiaryItemToDisk:(DiaryItem *)dItem{
@@ -68,6 +68,24 @@
             assert(NO);
         }
 }
+
+-(DiaryItem*)getDiaryItemForFileName:(NSString*)fileName{
+    BOOL isDirectory;
+    [self.fileManager fileExistsAtPath:self.diaryEntriesPath isDirectory:&isDirectory];
+
+    if (isDirectory) {
+        DiaryItem *dItem = [[DiaryItem alloc]init];
+        dItem.title = fileName;
+        NSString *dItemPath = [self.diaryEntriesPath stringByAppendingPathComponent:fileName];
+        dItem.content = [NSString stringWithContentsOfFile:dItemPath encoding:NSUTF8StringEncoding error:nil];
+        
+        return dItem;
+    }
+    else{
+        assert(NO);
+    }
+}
+
 
 
 @end
