@@ -41,10 +41,10 @@
             </objects>
             <point key="canvasLocation" x="414" y="9"/>
         </scene>
-        <!--View Controller-->
+        <!--Dairy View Controller-->
         <scene sceneID="7rR-g0-3kt">
             <objects>
-                <viewController id="FnQ-yl-LrM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DairyViewController" id="FnQ-yl-LrM" customClass="DairyViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sZW-XQ-7Th"/>
                         <viewControllerLayoutGuide type="bottom" id="NNI-Zu-T8a"/>
