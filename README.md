@@ -1,0 +1,24 @@
+# dairyApp
+split request to single small task is the method
+- Read client requests
+- Identify task
+	- Design UI init
+	- Identify events occurring during execution of app
+		- Application Launched
+		- viewDidLoad : Ask the model for how many text files are in the Documents directory. Retrieve names of all files in the Documents directory.
+	- Add button clicked
+		- Push the destination viewController on the navigation controller stack OR use segues.( why mohit only use segue______if project is big then segue have link on storyboard which makes it clear.
+	- Save Button
+		- Validate the input in the text field and text view
+		- ask the model to dave the information to the Documents folder
+			- Verify if user is creating a new entry or updating an entry and proceed accordingly.
+		- Pop the destination from the Navigation controller
+		- Inform the source view controller (using delegate) so that the source view controller can reload the table view.
+	- Delete button
+		- Get information about the specific entry the user wants to delete
+		- Ask the  model to delete the file form the disk
+		- Delete the row from the table view(delete row at index)
+- Model -> Singleton:
+	- Retrive data from disk
+	- Update data on disk
+	- Create data on disk
