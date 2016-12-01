@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DairyManager : NSObject<NSCoding>
+@interface DairyManager : NSObject
 @property(nonatomic,strong)NSMutableArray*filesOnDisk;
 @property (nonatomic, strong) NSFileManager *fileManager;
-@property(nonatomic,strong)NSString*filename;
-@property(nonatomic,strong)NSString*fileContent;
+
+
 +(instancetype)sharedInstance;
-//-(instancetype)init;
+
+-(instancetype)init;
 -(void)getAllFilesFromDisk;
+//-(void)saveDiaryItemToDisk:(Diar)
 @end
