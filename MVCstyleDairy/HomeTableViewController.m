@@ -25,9 +25,19 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    self.diaryManger = [DairyManager sharedInstance];
+    self.diaryManger.delegate = self;//When load, trigger delegate method informationUpdated.
+    [self.diaryManger getAllFilesFromDisk];
+    
+    
     self.addBtnItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonClicked:)];//add action to add Dairy
     
     self.navigationItem.rightBarButtonItem = self.addBtnItem;
+}
+
+
+-(void)informationUpdated{
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,8 +52,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    
+    return self.diaryManger.filesOnDisk.count;
 }
 
 
@@ -51,10 +61,28 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
-    
+    cell.textLabel.text = self.diaryManger.filesOnDisk[indexPath.row];
     return cell;
 }
 
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"cellSegue"]){
+        //get data from model
+        UITableViewCell* cell = sender;
+        NSString *filename = cell.textLabel.text;
+        NSLog(@"%@",filename);
+        
+        //send data forward DairyViewController
+        DairyViewController *destinationVC = [segue destinationViewController];
+        destinationVC.createNew = NO;
+        
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -91,13 +119,6 @@
 */
 
 
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
 
 
 @end

@@ -7,13 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DiaryItem.h"
+@protocol DiaryManagerDelegate<NSObject>
+-(void)informationUpdated;
+@end
 
-@interface DairyManager : NSObject<NSCoding>
+@interface DairyManager : NSObject
 @property(nonatomic,strong)NSMutableArray*filesOnDisk;
 @property (nonatomic, strong) NSFileManager *fileManager;
-@property(nonatomic,strong)NSString*filename;
-@property(nonatomic,strong)NSString*fileContent;
+@property (nonatomic, strong) NSString*diaryEntriesPath;
+@property(nonatomic,weak)id<DiaryManagerDelegate>delegate;
+
+
 +(instancetype)sharedInstance;
-//-(instancetype)init;
+
+-(instancetype)init;
 -(void)getAllFilesFromDisk;
+-(void)saveDiaryItemToDisk:(DiaryItem*)dItem;
 @end
