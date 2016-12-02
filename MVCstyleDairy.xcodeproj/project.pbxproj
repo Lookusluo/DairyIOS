@@ -12,11 +12,11 @@
 		C3C978781DEF305D00F5E6ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C978771DEF305D00F5E6ED /* AppDelegate.m */; };
 		C3C978801DEF305D00F5E6ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C9787F1DEF305D00F5E6ED /* Assets.xcassets */; };
 		C3C978831DEF305D00F5E6ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C978811DEF305D00F5E6ED /* LaunchScreen.storyboard */; };
-		C3C9788C1DEF31C900F5E6ED /* DairyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C9788B1DEF31C900F5E6ED /* DairyManager.m */; };
 		C3C978901DEF47E500F5E6ED /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C9788F1DEF47E500F5E6ED /* HomeTableViewController.m */; };
 		C3C978941DEFBAFD00F5E6ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C978921DEFBAFD00F5E6ED /* Main.storyboard */; };
 		C3C978971DEFC35300F5E6ED /* DairyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C978961DEFC35300F5E6ED /* DairyViewController.m */; };
 		C3C9789A1DEFCD0A00F5E6ED /* DiaryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C978991DEFCD0A00F5E6ED /* DiaryItem.m */; };
+		C3FA51C51DF10B24003AFC34 /* DairyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FA51C41DF10B24003AFC34 /* DairyManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,8 +29,6 @@
 		C3C9787F1DEF305D00F5E6ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3C978821DEF305D00F5E6ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3C978841DEF305D00F5E6ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C3C9788A1DEF31C900F5E6ED /* DairyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DairyManager.h; path = ../DairyManager.h; sourceTree = "<group>"; };
-		C3C9788B1DEF31C900F5E6ED /* DairyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DairyManager.m; path = ../DairyManager.m; sourceTree = "<group>"; };
 		C3C9788E1DEF47E500F5E6ED /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
 		C3C9788F1DEF47E500F5E6ED /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
 		C3C978931DEFBAFD00F5E6ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MVCstyleDairy/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -38,6 +36,8 @@
 		C3C978961DEFC35300F5E6ED /* DairyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DairyViewController.m; sourceTree = "<group>"; };
 		C3C978981DEFCD0A00F5E6ED /* DiaryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryItem.h; sourceTree = "<group>"; };
 		C3C978991DEFCD0A00F5E6ED /* DiaryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryItem.m; sourceTree = "<group>"; };
+		C3FA51C31DF10B24003AFC34 /* DairyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DairyManager.h; sourceTree = "<group>"; };
+		C3FA51C41DF10B24003AFC34 /* DairyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DairyManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +94,8 @@
 		C3C9788D1DEF325700F5E6ED /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C3C9788A1DEF31C900F5E6ED /* DairyManager.h */,
-				C3C9788B1DEF31C900F5E6ED /* DairyManager.m */,
+				C3FA51C31DF10B24003AFC34 /* DairyManager.h */,
+				C3FA51C41DF10B24003AFC34 /* DairyManager.m */,
 				C3C978981DEFCD0A00F5E6ED /* DiaryItem.h */,
 				C3C978991DEFCD0A00F5E6ED /* DiaryItem.m */,
 			);
@@ -191,9 +191,9 @@
 				C3C978971DEFC35300F5E6ED /* DairyViewController.m in Sources */,
 				C3C978901DEF47E500F5E6ED /* HomeTableViewController.m in Sources */,
 				C3C9789A1DEFCD0A00F5E6ED /* DiaryItem.m in Sources */,
-				C3C9788C1DEF31C900F5E6ED /* DairyManager.m in Sources */,
 				C3C978781DEF305D00F5E6ED /* AppDelegate.m in Sources */,
 				C3C978751DEF305D00F5E6ED /* main.m in Sources */,
+				C3FA51C51DF10B24003AFC34 /* DairyManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

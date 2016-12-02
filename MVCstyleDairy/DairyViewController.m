@@ -42,6 +42,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.saveBtnItem.enabled = NO;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideKeyboard:)];
+    tap.delegate = self;
+    [self.view addGestureRecognizer:tap];
+    
     self.contentTextView.layer.borderColor = [[UIColor grayColor]CGColor];//Convert UIColor to CGColor
     self.contentTextView.layer.borderWidth = 1.0;
     self.contentTextView.layer.cornerRadius = 3.0;
@@ -58,6 +63,30 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - keyboard will show
+-(void)hideKeyboard:(UITapGestureRecognizer *)recognizer{
+    [self.contentTextView resignFirstResponder];
+    //    if (self.contenttextView.text.length <=0) {
+    //        self.contenttextView.text = @"Enter content here";
+    //    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.titleTextField resignFirstResponder];
+    self.saveBtnItem.enabled = YES;
+    return YES;
+}
+
+
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([touch.view isKindOfClass:[UIButton class]]) {
+        return NO;
+    }
+    return YES;
 }
 
 /*
